@@ -17,3 +17,14 @@ create table if not exists public.threshold_settings (
 
 create index if not exists threshold_settings_created_at_idx
   on public.threshold_settings (created_at desc);
+
+create table if not exists public.users (
+  id uuid primary key default gen_random_uuid(),
+  email text unique not null,
+  password_hash text not null,
+  name text not null,
+  created_at timestamptz not null default timezone('utc', now())
+);
+
+create index if not exists users_email_idx
+  on public.users (email);
