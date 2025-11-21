@@ -17,7 +17,7 @@ export const ReadingsModel = {
     // Get total count
     const { count, error: countError } = await supabase
       .from(TABLE)
-      .select("*", { count: "exact", head: true });
+      .select("id", { count: "exact", head: true });
 
     if (countError) throw countError;
 

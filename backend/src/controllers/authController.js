@@ -32,12 +32,6 @@ export const AuthController = {
         });
       }
 
-      // Check if user already exists
-      const existingUser = await UserModel.findByEmail(email);
-      if (existingUser) {
-        return res.status(400).json({ error: "Email already exists" });
-      }
-
       // Hash password
       const password_hash = await bcrypt.hash(password, 10);
 
